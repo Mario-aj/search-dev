@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Roboto Slab';
+    font-weight: 400;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&display=swap');
+  }
+
+  * {
+    @apply box-border p-0 m-0 border-0;
+  }
+
+  body {
+    @apply text-gray-800 transition-all duration-300 bg-white dark:bg-gray-800 font-body dark:text-white;
+  }
+}
