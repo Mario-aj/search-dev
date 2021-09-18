@@ -1,42 +1,36 @@
 import Link from 'next/link';
 import { FaSignInAlt, FaRegEnvelope, FaUnlockAlt } from 'react-icons/fa';
 
-import { useTheme } from '../hooks';
+import { Input } from '../ui';
 
 export const SignIn = () => {
-  const { theme, setTheme } = useTheme();
-
   return (
     <div className="grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
       <section className="flex flex-col items-center justify-center w-full">
         <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
 
-        <div className="flex flex-col mb-6 space-y-2">
-          <div className="flex items-center p-4 transition-all duration-300 bg-white rounded-lg w-80 h-14 dark:bg-gray-900">
-            <FaRegEnvelope className="text-gray-400" />
-            <input
+        <form onSubmit={() => {}}>
+          <div className="flex flex-col mb-6 space-y-2">
+            <Input
+              Icon={() => <FaRegEnvelope className="text-gray-400" />}
               type="text"
               placeholder="E-mail ou Telefone"
-              className="w-full h-full p-2 transition-all duration-300 dark:bg-gray-900"
             />
-          </div>
 
-          <div className="flex items-center p-4 transition-all duration-300 bg-white rounded-lg w-80 h-14 dark:bg-gray-900">
-            <FaUnlockAlt className="text-gray-400" />
-            <input
+            <Input
+              Icon={() => <FaUnlockAlt className="text-gray-400" />}
               type="password"
               placeholder="Senha"
-              className="w-full h-full p-2 transition-all duration-300 dark:bg-gray-900"
             />
           </div>
-        </div>
 
-        <button
-          className="flex items-center justify-center mb-6 transition-all duration-300 bg-yellow-500 rounded-lg hover:bg-yellow-600 w-80 h-14 dark:text-gray-900"
-          type="submit"
-        >
-          Entrar
-        </button>
+          <button
+            className="flex items-center justify-center mb-6 transition-all duration-300 bg-yellow-500 rounded-lg hover:bg-yellow-600 w-80 h-14 dark:text-gray-900"
+            type="submit"
+          >
+            Entrar
+          </button>
+        </form>
 
         <Link href="#">
           <a className="mb-20">Esqueci minha senha</a>
@@ -61,11 +55,7 @@ export const SignIn = () => {
             ')',
         }}
         className="hidden sm:flex"
-      >
-        <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-          darkmode
-        </button>
-      </section>
+      />
     </div>
   );
 };
