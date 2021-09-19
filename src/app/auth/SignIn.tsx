@@ -62,6 +62,7 @@ export const SignIn = () => {
 
       <div className="absolute top-2 right-2">
         <Toggle
+          isThemeTogge
           isToggle={theme === 'dark'}
           onToggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         />
