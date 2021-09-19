@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { FaSignInAlt, FaRegEnvelope, FaUnlockAlt } from 'react-icons/fa';
 
-import { Input } from '../ui';
+import { useTheme } from '../hooks';
+import { Input, Toggle } from '../ui';
 
 export const SignIn = () => {
+  const { theme, setTheme } = useTheme();
+
   return (
-    <div className="grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
+    <div className="relative grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
       <section className="flex flex-col items-center justify-center w-full">
         <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
 
@@ -56,6 +59,14 @@ export const SignIn = () => {
         }}
         className="hidden sm:flex"
       />
+
+      <div className="absolute top-2 right-2">
+        <Toggle
+          isThemeTogge
+          isToggle={theme === 'dark'}
+          onToggle={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        />
+      </div>
     </div>
   );
 };
