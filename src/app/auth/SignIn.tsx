@@ -12,7 +12,10 @@ export const SignIn = () => {
       <section className="flex flex-col items-center justify-center w-full">
         <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
 
-        <form onSubmit={() => {}}>
+        <form
+          onSubmit={() => {}}
+          className="flex flex-col items-center justify-center w-full"
+        >
           <div className="flex flex-col mb-6 space-y-2">
             <Input
               Icon={() => <FaRegEnvelope className="text-gray-400" />}
@@ -28,7 +31,7 @@ export const SignIn = () => {
           </div>
 
           <button
-            className="flex items-center justify-center mb-6 transition-all duration-300 bg-yellow-500 rounded-lg hover:bg-yellow-600 w-80 h-14 dark:text-gray-900"
+            className="flex items-center justify-center max-w-xs mb-6 transition-all duration-300 bg-yellow-500 rounded-lg w-72 hover:bg-yellow-600 h-14 dark:text-gray-900"
             type="submit"
           >
             Entrar
