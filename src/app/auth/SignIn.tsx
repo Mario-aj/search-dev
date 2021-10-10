@@ -1,43 +1,28 @@
 import Link from 'next/link';
-import { FaSignInAlt, FaRegEnvelope, FaUnlockAlt } from 'react-icons/fa';
+import { FaSignInAlt } from 'react-icons/fa';
+
+import { Form } from './Form';
 
 import { useTheme } from '../hooks';
-import { Input, Toggle } from '../ui';
+import { Toggle } from '../ui';
+
+export type OnSubmitProps = {
+  credential: string;
+  password: string;
+};
 
 export const SignIn = () => {
   const { theme, setTheme } = useTheme();
+
+  const onSubmit = ({ credential, password }: OnSubmitProps) => {
+    console.log({ credential, password });
+  };
 
   return (
     <div className="relative grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
       <section className="flex flex-col items-center justify-center w-full">
         <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
-
-        <form
-          onSubmit={() => {}}
-          className="flex flex-col items-center justify-center w-full"
-        >
-          <div className="flex flex-col mb-6 space-y-2">
-            <Input
-              Icon={() => <FaRegEnvelope className="text-gray-400" />}
-              type="text"
-              placeholder="E-mail ou Telefone"
-            />
-
-            <Input
-              Icon={() => <FaUnlockAlt className="text-gray-400" />}
-              type="password"
-              placeholder="Senha"
-            />
-          </div>
-
-          <button
-            className="flex items-center justify-center max-w-xs mb-6 transition-all duration-300 bg-yellow-500 rounded-lg w-72 hover:bg-yellow-600 h-14 dark:text-gray-900"
-            type="submit"
-          >
-            Entrar
-          </button>
-        </form>
-
+        <Form onSubmit={onSubmit} />
         <Link href="#">
           <a className="mb-20">Esqueci minha senha</a>
         </Link>
