@@ -9,7 +9,7 @@ export type OnSubmitProps = {
   password: string;
 };
 
-export const SignIn = () => {
+export const SignUp = () => {
   const { theme, setTheme } = useTheme();
 
   const onSubmit = ({ credential, password }: OnSubmitProps) => {
@@ -23,15 +23,14 @@ export const SignIn = () => {
 
         <Form onSubmit={onSubmit} />
 
-        <Link href="#">
-          <a className="mb-20">Esqueci minha senha</a>
+        <Link href="/auth/signin">
+          <a className="mb-14">Esqueci minha senha</a>
         </Link>
 
-        <Link href="/auth/signup">
-          <div className="flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer dark:text-yellow-500">
-            <FaSignInAlt />
-            <a>Criar conta</a>
-          </div>
+        <Link href="/auth/signin">
+          <a className="transition-all duration-300 cursor-pointer dark:text-yellow-500">
+            Já tenho uma conta
+          </a>
         </Link>
       </section>
 
