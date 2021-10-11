@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { FaSignInAlt } from 'react-icons/fa';
-
 import { Form } from './Form';
-
 import { useTheme } from '../hooks';
 import { Toggle } from '../ui';
 
@@ -22,7 +20,9 @@ export const SignIn = () => {
     <div className="relative grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
       <section className="flex flex-col items-center justify-center w-full">
         <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
+
         <Form onSubmit={onSubmit} />
+
         <Link href="#">
           <a className="mb-20">Esqueci minha senha</a>
         </Link>
