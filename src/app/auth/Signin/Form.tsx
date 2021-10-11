@@ -1,6 +1,6 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 import { FaRegEnvelope, FaUnlockAlt } from 'react-icons/fa';
-import { Input } from '../ui';
+import { Input } from '../../ui';
 import { OnSubmitProps } from './SignIn';
 
 type FormProps = {

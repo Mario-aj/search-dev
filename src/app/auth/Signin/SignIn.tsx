@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FaSignInAlt } from 'react-icons/fa';
 import { Form } from './Form';
-import { useTheme } from '../hooks';
-import { Toggle } from '../ui';
+import { useTheme } from '../../hooks';
+import { Toggle } from '../../ui';
 
 export type OnSubmitProps = {
   credential: string;
