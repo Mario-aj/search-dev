@@ -6,13 +6,6 @@ import { OnSubmitProps } from './SignIn';
 type FormProps = {
   onSubmit: (props: OnSubmitProps) => void;
 };
-type ValidationProps = {
-  show: boolean;
-};
-
-const Validation = ({ show }: ValidationProps) => {
-  return show ? <span className="text-xs text-red-600">required</span> : null;
-};
 
 export const Form = ({ onSubmit }: FormProps) => {
   const [credential, setCredential] = useState('');
@@ -56,28 +49,24 @@ export const Form = ({ onSubmit }: FormProps) => {
       className="flex flex-col items-center justify-center w-full"
     >
       <div className="flex flex-col mb-6 space-y-2">
-        <div>
-          <Input
-            Icon={() => <FaRegEnvelope className="text-gray-400" />}
-            type="text"
-            value={credential}
-            onChange={event => setCredential(event.target.value)}
-            placeholder="E-mail ou Telefone"
-            hasError={error === 'credential' || error === 'bothError'}
-          />
-          <Validation show={error === 'credential' || error === 'bothError'} />
-        </div>
-        <div>
-          <Input
-            Icon={() => <FaUnlockAlt className="text-gray-400" />}
-            type="password"
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            placeholder="Senha"
-            hasError={error === 'password' || error === 'bothError'}
-          />
-          <Validation show={error === 'password' || error === 'bothError'} />
-        </div>
+        <Input
+          Icon={() => <FaRegEnvelope className="text-gray-400" />}
+          type="text"
+          value={credential}
+          onChange={event => setCredential(event.target.value)}
+          placeholder="E-mail ou Telefone"
+          hasError={error === 'credential' || error === 'bothError'}
+          hasErrorText="required field"
+        />
+        <Input
+          Icon={() => <FaUnlockAlt className="text-gray-400" />}
+          type="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+          placeholder="Senha"
+          hasError={error === 'password' || error === 'bothError'}
+          hasErrorText="required field"
+        />
       </div>
 
       <button

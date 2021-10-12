@@ -1,27 +1,32 @@
 import React, { FormEvent, useCallback, useState } from 'react';
-import { FaRegEnvelope, FaUnlockAlt } from 'react-icons/fa';
+import { FaRegEnvelope, FaUnlockAlt, FaUserAlt } from 'react-icons/fa';
 import { Input } from '../../ui';
 import { OnSubmitProps } from './SignUp';
 
 type FormProps = {
   onSubmit: (props: OnSubmitProps) => void;
 };
-type ValidationProps = {
-  show: boolean;
-};
-
-const Validation = ({ show }: ValidationProps) => {
-  return show ? <span className="text-xs text-red-600">required</span> : null;
-};
 
 export const Form = ({ onSubmit }: FormProps) => {
+  const [completeName, setCompleteName] = useState('');
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const verifyCredentials = () => {
-    if (!credential.trim() && !password.trim()) {
-      setError('bothError');
+  const validateCredentials = () => {
+    if (
+      !credential.trim() &&
+      !password.trim() &&
+      !completeName.trim() &&
+      !confirmPassword.trim()
+    ) {
+      setError('allField');
+      return true;
+    }
+
+    if (!completeName.trim()) {
+      setError('complete_name');
       return true;
     }
 
@@ -35,6 +40,16 @@ export const Form = ({ onSubmit }: FormProps) => {
       return true;
     }
 
+    if (!confirmPassword.trim()) {
+      setError('confirm_password');
+      return true;
+    }
+
+    if (confirmPassword.trim() !== password.trim()) {
+      setError('password_is_not_equal');
+      return true;
+    }
+
     return false;
   };
 
@@ -42,7 +57,7 @@ export const Form = ({ onSubmit }: FormProps) => {
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      if (verifyCredentials()) return;
+      if (validateCredentials()) return;
 
       setError('');
       onSubmit({ credential, password });
@@ -56,39 +71,51 @@ export const Form = ({ onSubmit }: FormProps) => {
       className="flex flex-col items-center justify-center w-full"
     >
       <div className="flex flex-col mb-6 space-y-2">
-        <div>
-          <Input
-            Icon={() => <FaRegEnvelope className="text-gray-400" />}
-            type="text"
-            value={credential}
-            onChange={event => setCredential(event.target.value)}
-            placeholder="E-mail ou Telefone"
-            hasError={error === 'credential' || error === 'bothError'}
-          />
-          <Validation show={error === 'credential' || error === 'bothError'} />
-        </div>
-        <div>
-          <Input
-            Icon={() => <FaUnlockAlt className="text-gray-400" />}
-            type="password"
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            placeholder="Senha"
-            hasError={error === 'password' || error === 'bothError'}
-          />
-          <Validation show={error === 'password' || error === 'bothError'} />
-        </div>
-        <div>
-          <Input
-            Icon={() => <FaUnlockAlt className="text-gray-400" />}
-            type="password"
-            value={password}
-            onChange={event => setPassword(event.target.value)}
-            placeholder="confirme sua senha"
-            hasError={error === 'password' || error === 'bothError'}
-          />
-          <Validation show={error === 'password' || error === 'bothError'} />
-        </div>
+        <Input
+          Icon={() => <FaUserAlt className="text-gray-400" />}
+          type="text"
+          value={completeName}
+          onChange={event => setCompleteName(event.target.value)}
+          placeholder="Nome completo"
+          hasError={error === 'complete_name' || error === 'allField'}
+          hasErrorText="required field"
+        />
+        <Input
+          Icon={() => <FaRegEnvelope className="text-gray-400" />}
+          type="text"
+          value={credential}
+          onChange={event => setCredential(event.target.value)}
+          placeholder="E-mail ou Telefone"
+          hasError={error === 'credential' || error === 'allField'}
+          hasErrorText="required field"
+        />
+        <Input
+          Icon={() => <FaUnlockAlt className="text-gray-400" />}
+          type="password"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+          placeholder="Senha"
+          hasError={error === 'password' || error === 'allField'}
+          hasErrorText="required field"
+        />
+
+        <Input
+          Icon={() => <FaUnlockAlt className="text-gray-400" />}
+          type="password"
+          value={confirmPassword}
+          onChange={event => setConfirmPassword(event.target.value)}
+          placeholder="confirme sua senha"
+          hasError={
+            error === 'confirm_password' ||
+            error === 'allField' ||
+            error === 'password_is_not_equal'
+          }
+          hasErrorText={
+            error === 'password_is_not_equal'
+              ? 'As senhas não combinam, por favor, repita a sua senha'
+              : 'required field'
+          }
+        />
       </div>
 
       <button
