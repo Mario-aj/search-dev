@@ -11,7 +11,7 @@ type FormProps = {
 export const Form = ({ onSubmit }: FormProps) => {
   const handleSubmitEvent = useCallback(
     (values: any) => {
-      onSubmit({ credential: values.credential, password: values.password });
+      onSubmit(values);
     },
     [onSubmit]
   );

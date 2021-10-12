@@ -62,7 +62,7 @@ export const Form = ({ onSubmit }: FormProps) => {
             className="flex items-center justify-center max-w-xs mb-6 transition-all duration-300 bg-yellow-500 rounded-lg w-72 hover:bg-yellow-600 h-14 dark:text-gray-900"
             type="submit"
           >
-            Entrar
+            Registrar
           </button>
         </form>
       )}
