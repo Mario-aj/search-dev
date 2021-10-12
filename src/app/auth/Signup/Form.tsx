@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Form as ReactFinalForm } from 'react-final-form';
+import { toast } from 'react-toastify';
 import { OnSubmitProps } from './SignUp';
 import { FinalFormTextInput } from '../../ui';
 import { required } from '../../../utils/forms';
@@ -11,6 +12,11 @@ type FormProps = {
 export const Form = ({ onSubmit }: FormProps) => {
   const handleSubmitEvent = useCallback(
     (values: any) => {
+      if (values.password !== values.confirmPassword) {
+        toast.error('As senhas precisam ser iguais');
+        return;
+      }
+
       onSubmit(values);
     },
     [onSubmit]
