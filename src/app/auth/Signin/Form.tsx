@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { Form as ReactFinalForm } from 'react-final-form';
 import { OnSubmitProps } from './SignIn';
 import { FinalFormTextInput } from '../../ui';

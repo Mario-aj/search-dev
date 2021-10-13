@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
-
+import { useEffect, useState, ReactNode } from 'react';
 import { ThemeContext } from '../contexts';
+
+type ThemeProviderProps = {
+  children: ReactNode;
+};
 
 const getInitialTheme = () => {
   if (typeof window !== 'undefined' && window.localStorage) {
-    let storedTheme = window.localStorage.getItem('betfight-theme');
+    const storedTheme = window.localStorage.getItem('betfight-theme');
 
     if (storedTheme) return storedTheme as 'dark' | 'light';
   }
@@ -12,7 +15,7 @@ const getInitialTheme = () => {
   return 'light';
 };
 
-export const ThemeProvider = ({ children }: any) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {

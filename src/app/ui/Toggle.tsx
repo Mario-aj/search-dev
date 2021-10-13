@@ -14,6 +14,7 @@ export const Toggle = ({
 }: ToggleProps) => {
   return (
     <div
+      role="button"
       className="relative flex items-center justify-between px-1 bg-black border-0 cursor-pointer w-14 h-7 rounded-3xl"
       onClick={onToggle}
     >
