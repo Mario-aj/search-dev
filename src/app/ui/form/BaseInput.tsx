@@ -1,9 +1,9 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 
 export type BaseInputProps = {
   label?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 };
 

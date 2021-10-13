@@ -1,8 +1,8 @@
-import React, { HTMLProps } from 'react';
+import { HTMLProps } from 'react';
 import classnames from 'classnames';
 import { BaseInput } from './BaseInput';
 
-export interface InputProps extends HTMLProps<HTMLInputElement> {}
+export type InputProps = HTMLProps<HTMLInputElement>;
 
 export const Input = ({ label, className, ref, type, ...rest }: InputProps) => (
   <BaseInput

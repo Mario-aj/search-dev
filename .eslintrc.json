@@ -1,15 +1,69 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [""]
+      }
+    },
+    "react": { "version": "detect" }
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    // "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
-    "import/prefer-default-export": 0,
-    "no-console": "warn",
+    "@typescript-eslint/no-unused-vars": "error",
     "no-unused-expressions": ["error", { "allowTernary": true }],
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-param-reassign": ["error", { "props": false }],
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "jsx-a11y/anchor-is-valid": 0
+    "import/prefer-default-export": 0,
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "react-final-form",
+            "importNames": ["Field"],
+            "message": "Please use FieldWithParse from app/ui/form instead."
+          }
+        ]
+      }
+    ],
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/anchor-is-valid": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "react/require-default-props": "off",
+    "jsx-a11y/interactive-supports-focus": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "react/jsx-props-no-spreading": 0
   }
 }
