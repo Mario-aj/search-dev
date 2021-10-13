@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { FaSignInAlt } from 'react-icons/fa';
 import { Form } from './Form';
 import { useTheme } from '../../hooks';
 import { Toggle } from '../../ui';
@@ -7,19 +6,20 @@ import { Toggle } from '../../ui';
 export type OnSubmitProps = {
   credential: string;
   password: string;
+  completeName: string;
 };
 
 export const SignUp = () => {
   const { theme, setTheme } = useTheme();
 
-  const onSubmit = ({ credential, password }: OnSubmitProps) => {
-    console.log({ credential, password });
+  const onSubmit = ({ completeName, credential, password }: OnSubmitProps) => {
+    console.log({ credential, password, completeName });
   };
 
   return (
     <div className="relative grid w-screen h-screen grid-cols-1 sm:grid-cols-2">
       <section className="flex flex-col items-center justify-center w-full">
-        <h1 className="mb-6 text-2xl font-medium">Faça seu login</h1>
+        <h1 className="mb-6 text-2xl font-medium">Faça seu cadastro</h1>
 
         <Form onSubmit={onSubmit} />
 
