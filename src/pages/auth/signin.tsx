@@ -1,5 +1,5 @@
-import { SignIn as Login } from '../../app/auth';
+import { SignIn } from '../../app/auth';
 
-const SignIn = () => <Login />;
+const Login = () => <SignIn />;
 
-export default SignIn;
+export default Login;
