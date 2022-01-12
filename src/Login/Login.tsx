@@ -1,4 +1,4 @@
-import { LoginIcon } from '../Icons';
+import { LoginIcon } from '../ui';
 
 const Login = () => {
   return (
