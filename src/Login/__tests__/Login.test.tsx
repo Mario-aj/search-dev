@@ -9,13 +9,13 @@ describe('Login', () => {
 
       expect(screen.getByTitle(/LoginIcon/i)).toBeInTheDocument();
       expect(
-        screen.getByRole('heading', { name: /REGISTER/i })
+        screen.getByRole('heading', { name: /welcome/i })
       ).toBeInTheDocument();
       expect(
-        screen.getByText(/click on the button to register with your github/i)
+        screen.getByText(/click on the button to login with your github/i)
       ).toBeInTheDocument();
       expect(
-        screen.getByRole('button', { name: /register with github/i })
+        screen.getByRole('button', { name: /login with github/i })
       ).toBeInTheDocument();
     });
   });
@@ -26,13 +26,13 @@ describe('Login', () => {
 
       expect(screen.getByTitle(/LoginIcon/i)).toMatchSnapshot();
       expect(
-        screen.getByRole('heading', { name: /REGISTER/i })
+        screen.getByRole('heading', { name: /welcome/i })
       ).toMatchSnapshot();
       expect(
-        screen.getByText(/click on the button to register with your github/i)
+        screen.getByText(/click on the button to login with your github/i)
       ).toMatchSnapshot();
       expect(
-        screen.getByRole('button', { name: /register with github/i })
+        screen.getByRole('button', { name: /login with github/i })
       ).toMatchSnapshot();
     });
   });
