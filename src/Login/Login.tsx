@@ -2,20 +2,20 @@ import { LoginIcon } from '../ui';
 
 const Login = () => {
   return (
-    <div className="md:flex md:w-3/4 lg:w-3/5 w-full bg-gray-200 items-center gap-4 rounded-lg justify-center h-full">
+    <div className="items-center justify-center w-full h-full gap-4 bg-gray-200 rounded-lg md:flex md:w-3/4 lg:w-3/5">
       <LoginIcon />
-      <div className="w-full p-2 md:w-1/2 h-full flex flex-col items-center justify-center">
-        <div className="mb-8 flex flex-col items-center justify-center">
-          <h1 className="uppercase text-4xl font-bold text-gray-800">
+      <div className="flex flex-col items-center justify-center w-full h-full p-2 md:w-1/2">
+        <div className="flex flex-col items-center justify-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-800 uppercase">
             register
           </h1>
-          <p className="text-gray-500 text-lg text-center">
+          <p className="text-lg text-center text-gray-500">
             Click on the button to register with your github
           </p>
         </div>
         <button
           type="button"
-          className="bg-indigo-500 py-3 text-xl uppercase px-4 items-center justify-center hover:bg-indigo-600 rounded-md transition-all duration-300 text-white font-bold active:bg-indigo-700"
+          className="items-center justify-center px-4 py-3 text-xl font-bold text-white uppercase transition-all duration-300 bg-indigo-500 rounded-md hover:bg-indigo-600 active:bg-indigo-700"
         >
           Register with github
         </button>
