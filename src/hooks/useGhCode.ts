@@ -15,7 +15,7 @@ const useGhCode = () => {
   }
 
   useLayoutEffect(() => {
-    let code = window.localStorage.getItem('gh-dev-code');
+    let code = localStorage.getItem('gh-dev-code');
 
     code = code ? JSON.parse(code) : getCodeFromUrl();
 
