@@ -14,9 +14,10 @@ describe('Login', () => {
       expect(
         screen.getByText(/click on the button to login with your github/i)
       ).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: /login with github/i })
-      ).toBeInTheDocument();
+
+      const link = screen.getByRole('link', { name: /login with github/i });
+      expect(link).toBeInTheDocument();
+      expect(link.childNodes.length).toBe(2);
     });
   });
 
@@ -32,7 +33,7 @@ describe('Login', () => {
         screen.getByText(/click on the button to login with your github/i)
       ).toMatchSnapshot();
       expect(
-        screen.getByRole('button', { name: /login with github/i })
+        screen.getByRole('link', { name: /login with github/i })
       ).toMatchSnapshot();
     });
   });
