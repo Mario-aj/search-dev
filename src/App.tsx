@@ -1,8 +1,13 @@
+import { useGhCode } from './hooks';
 import { Login } from './Login';
 
 function App() {
-  return (
-    <div className="flex w-full h-screen items-center justify-center md:p-6 bg-gray-900 p-4">
+  const ghCode = useGhCode();
+
+  return ghCode ? (
+    <div>Welcome to home page :) !</div>
+  ) : (
+    <div className="flex items-center justify-center w-full h-screen p-4 bg-gray-900 md:p-6">
       <Login />
     </div>
   );
