@@ -3,8 +3,8 @@ import { LoginIcon } from '../ui';
 
 const Login = () => {
   const gh = {
-    client_id: process.env.REACT_APP_CLIENT_ID,
-    redirect_uri: process.env.REACT_APP_REDIRECT_URI,
+    client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
+    redirect_uri: process.env.REACT_APP_GITHUB_REDIRECT_URI,
   };
 
   return (
