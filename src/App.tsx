@@ -19,14 +19,12 @@ const PrivateRoute = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <React.Fragment>
-        <Routes>
-          <Route path="/" element={<PrivateRoute />}>
-            <Route path="/" element={<Home />} />
-          </Route>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </React.Fragment>
+      <Routes>
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 };
