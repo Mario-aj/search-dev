@@ -1,1 +1,1 @@
-export { default as useGhCode } from './useGhCode';
+export { default as useGithubCode } from './useGithubCode';
