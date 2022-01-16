@@ -1,11 +1,20 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from '../Login';
+
+const MockLogin = () => {
+  return (
+    <BrowserRouter>
+      <Login />
+    </BrowserRouter>
+  );
+};
 
 describe('Login', () => {
   describe('Behavior', () => {
     it('should render correctly', () => {
-      render(<Login />);
+      render(<MockLogin />);
 
       expect(screen.getByTitle(/LoginIcon/i)).toBeInTheDocument();
       expect(
@@ -23,7 +32,7 @@ describe('Login', () => {
 
   describe('Styles', () => {
     it('matches snapshots', () => {
-      render(<Login />);
+      render(<MockLogin />);
 
       expect(screen.getByTitle(/LoginIcon/i)).toMatchSnapshot();
       expect(

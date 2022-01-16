@@ -230,7 +230,7 @@ exports[`Login Styles matches snapshots 3`] = `
 exports[`Login Styles matches snapshots 4`] = `
 <a
   class="flex items-center justify-center gap-2 px-4 py-3 text-xl font-bold text-white uppercase transition-all duration-300 bg-indigo-500 rounded-md hover:bg-indigo-600 active:bg-indigo-700"
-  href="https://github.com/login/oauth/authorize?scope=user&client_id=1d2146a2f85409c7e6a2&redirect_uri=http://localhost:3000/"
+  href="https://github.com/login/oauth/authorize?scope=user&client_id=1d2146a2f85409c7e6a2&redirect_uri=http://localhost:3000/login"
 >
   <svg
     fill="currentColor"
