@@ -10,8 +10,15 @@ import {
 import Home from './Home';
 import { Login } from './Login';
 
+export const env = {
+  client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
+  client_secret: process.env.REACT_APP_GITHUB_CLIENT_SECRET,
+  redirect_uri: process.env.REACT_APP_GITHUB_REDIRECT_URI,
+};
+
 const PrivateRoute = () => {
-  const isLoggedIn = localStorage.getItem('gh-dev-token') !== null;
+  const isLoggedIn = localStorage.getItem('gh-dev-access_token');
+  console.log(isLoggedIn);
 
   return isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
