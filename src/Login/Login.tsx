@@ -1,11 +1,34 @@
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { LoginIcon } from '../ui';
+import { useGithubCode } from '../hooks';
+import { env } from '../App';
+import * as api from '../services';
 
 const Login = () => {
-  const gh = {
-    client_id: process.env.REACT_APP_GITHUB_CLIENT_ID,
-    redirect_uri: process.env.REACT_APP_GITHUB_REDIRECT_URI,
-  };
+  const code = useGithubCode();
+  const navigate = useNavigate();
+  const { client_id = '', client_secret = '', redirect_uri } = env;
+
+  React.useEffect(() => {
+    if (code) {
+      api
+        .login({ client_id, client_secret, code })
+        .then((res) => {
+          console.log(res);
+          const access_token = res.split('&')[0].split('=')[1];
+          localStorage.setItem(
+            'gh-dev-access_token',
+            JSON.stringify(access_token)
+          );
+          navigate('/');
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    }
+  }, [code, navigate, client_id, client_secret]);
 
   return (
     <div className="flex items-center justify-center w-full h-screen p-4 bg-gray-900 md:p-6">
@@ -22,7 +45,7 @@ const Login = () => {
           </div>
           <a
             className="flex items-center justify-center gap-2 px-4 py-3 text-xl font-bold text-white uppercase transition-all duration-300 bg-indigo-500 rounded-md hover:bg-indigo-600 active:bg-indigo-700"
-            href={`https://github.com/login/oauth/authorize?scope=user&client_id=${gh.client_id}&redirect_uri=${gh.redirect_uri}`}
+            href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
           >
             <FaGithub />
             login with github
