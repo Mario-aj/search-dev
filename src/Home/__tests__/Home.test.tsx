@@ -9,13 +9,7 @@ const MockHome = () => (
 );
 
 describe('Home', () => {
-  describe('Behavior', () => {});
-
-  describe('Styles', () => {
-    it('matches snapshots', () => {
-      render(<MockHome />);
-
-      expect(document.body).toMatchSnapshot();
-    });
+  it('should render correctly', () => {
+    render(<MockHome />);
   });
 });
