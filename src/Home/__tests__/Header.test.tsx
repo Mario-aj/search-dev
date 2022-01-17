@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/prefer-presence-queries */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,63 +11,43 @@ const MockHeader = () => (
 );
 
 describe('Header', () => {
-  describe('Behavior', () => {
-    it('should render correctly', () => {
-      render(<MockHeader />);
+  it('should render correctly', () => {
+    render(<MockHeader />);
 
-      const dropdown = screen.getByTitle('dropdown');
-      const img = screen.getByRole('img', { name: /profile/i });
+    const dropdown = screen.getByTitle('dropdown');
+    const img = screen.getByRole('img', { name: /avatar/i });
 
-      expect(
-        screen.getByRole('heading', { name: /Gh-dev/i })
-      ).toBeInTheDocument();
-      expect(img).toBeInTheDocument();
-      expect(dropdown).toBeInTheDocument();
-      expect(dropdown).toHaveClass('hidden');
-    });
-
-    it('should show dropdown and its children', () => {
-      render(<MockHeader />);
-
-      const dropdown = screen.getByTitle('dropdown');
-      const img = screen.getByRole('img', { name: /profile/i });
-
-      userEvent.click(img);
-      expect(dropdown).not.toHaveClass('hidden');
-      expect(dropdown).toHaveClass('flex');
-
-      const link = screen.getByRole('link', { name: /profile/i });
-      const button = screen.getByRole('button', { name: /logout/i });
-
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', '#');
-      expect(button).toBeInTheDocument();
-      userEvent.click(button);
-      expect(window.location.pathname).toBe('/login');
-    });
-
-    it('should call logout function', () => {
-      render(<MockHeader />);
-
-      const button = screen.getByRole('button', { name: /logout/i });
-
-      userEvent.click(button);
-      expect(window.location.pathname).toBe('/login');
-    });
+    expect(
+      screen.getByRole('heading', { name: /Gh-dev/i })
+    ).toBeInTheDocument();
+    expect(dropdown).toBeInTheDocument();
+    expect(img).toBeInTheDocument();
+    expect(screen.queryByText(/profile/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/logout/i)).not.toBeInTheDocument();
   });
 
-  describe('Styles', () => {
-    it('should render correctly', () => {
-      render(<MockHeader />);
+  it('should show dropdown and its children', () => {
+    render(<MockHeader />);
 
-      const header = screen.getByRole('heading', { name: /Gh-dev/i });
-      const img = screen.getByRole('img', { name: /profile/i });
-      const dropdown = screen.getByTitle('dropdown');
+    const dropdown = screen.getByTitle('dropdown');
+    userEvent.click(dropdown);
 
-      expect(header).toMatchSnapshot();
-      expect(img).toMatchSnapshot();
-      expect(dropdown).toMatchSnapshot();
-      expect(dropdown).toMatchSnapshot();
-    });
+    const listItems = screen.getAllByRole('listitem');
+
+    expect(listItems.length).toBe(2);
+    expect(listItems[0]).toHaveTextContent(/Profile/i);
+    expect(listItems[1]).toHaveTextContent(/Logout/i);
+  });
+
+  it('should call logout function', () => {
+    render(<MockHeader />);
+
+    const dropdown = screen.getByTitle('dropdown');
+    userEvent.click(dropdown);
+
+    const logout = screen.getByText(/logout/i);
+    userEvent.click(logout);
+
+    expect(window.location.pathname).toBe('/login');
   });
 });
