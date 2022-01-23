@@ -1,19 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 
 import Login from 'pages/login';
 
-const MockLogin = () => {
-  return (
-    <BrowserRouter>
-      <Login />
-    </BrowserRouter>
-  );
-};
+jest.mock('next/router', () => ({
+  useRouter: () => ({ query: { code: '123' } }),
+}));
 
 describe('Login', () => {
   it('should render correctly', () => {
-    render(<MockLogin />);
+    render(<Login />);
 
     expect(screen.getByTitle(/LoginIcon/i)).toBeInTheDocument();
     expect(
