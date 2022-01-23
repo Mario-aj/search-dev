@@ -29,7 +29,7 @@ const Login = () => {
         console.log('error', error);
       }
     }
-  }, [code, data, error]);
+  }, [code, data, error, router]);
 
   return (
     <div className="flex items-center justify-center w-full h-screen py-8 bg-gray-800">
