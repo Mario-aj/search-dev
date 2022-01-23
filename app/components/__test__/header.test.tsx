@@ -24,9 +24,7 @@ describe('Header', () => {
     const dropdown = screen.getByTitle('dropdown');
     const img = screen.getByRole('img', { name: /avatar/i });
 
-    expect(
-      screen.getByRole('heading', { name: /Gh-dev/i })
-    ).toBeInTheDocument();
+    expect(screen.getByAltText(/search-dev/i)).toBeInTheDocument();
     expect(dropdown).toBeInTheDocument();
     expect(img).toBeInTheDocument();
     expect(screen.queryByText(/profile/i)).not.toBeInTheDocument();

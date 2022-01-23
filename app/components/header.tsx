@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { Dropdown } from 'app/components/ui';
 import { useUserInfos } from 'app/hooks/useUserInfos';
 
@@ -9,7 +10,7 @@ const Header = () => {
   const { user } = useUserInfos();
 
   const handleLogout = React.useCallback(() => {
-    localStorage.removeItem('gh-dev-access_token');
+    localStorage.removeItem('search-dev-access_token');
     router.push('/login');
   }, [router]);
 
@@ -18,7 +19,14 @@ const Header = () => {
   return (
     <div className="flex flex-row items-center justify-center w-full h-20 px-8 bg-white border-b border-b-gray-200">
       <div className="flex items-center justify-between w-full h-full max-w-5xl">
-        <h1 className="text-2xl font-bold text-gray-800">Gh-dev</h1>
+        <Image
+          src="/logo.png"
+          alt="search-dev"
+          width={180}
+          height={50}
+          className="cursor-pointer"
+          onClick={() => router.push('/')}
+        />
         <Dropdown
           avatarUrl={user.avatar_url}
           title={user.name}
