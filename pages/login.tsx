@@ -21,7 +21,7 @@ const Login = () => {
       if (data) {
         const access_token = data.split('&')[0].split('=')[1];
         localStorage.setItem(
-          'gh-dev-access_token',
+          'search-dev-access_token',
           JSON.stringify(access_token)
         );
         router.push('/');

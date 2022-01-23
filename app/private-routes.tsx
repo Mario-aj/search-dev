@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 const withAuth = (WrappedComponent: any) => (props: any) => {
   if (typeof window !== 'undefined' && window.localStorage) {
-    const token = localStorage.getItem('gh-dev-access_token');
+    const token = localStorage.getItem('search-dev-access_token');
 
     if (!token) {
       Router.replace('/login');

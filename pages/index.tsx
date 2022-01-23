@@ -26,7 +26,7 @@ const Home = ({ token }: Props) => {
           dispatchUser(data);
         }
       } catch (error) {
-        console.log('home page', error);
+        console.log('home page error', error);
       }
     };
 
