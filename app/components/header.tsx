@@ -17,8 +17,8 @@ const Header = () => {
   if (!user) return null;
 
   return (
-    <div className="flex flex-row items-center justify-center w-full h-20 px-8 bg-white border-b border-b-gray-200">
-      <div className="flex items-center justify-between w-full h-full max-w-5xl">
+    <div className="flex flex-row items-center justify-center w-full h-24 px-8 bg-white border-b border-b-gray-200">
+      <div className="flex items-center justify-between w-full h-full max-w-6xl">
         <Image
           src="/logo.png"
           alt="search-dev"
