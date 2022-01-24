@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { MdClear } from 'react-icons/md';
 
 import Header from 'app/components/header';
 import getUserInfos from 'app/services/getUserInfos';
 import { useUserInfos } from 'app/hooks/useUserInfos';
 import PrivateRoutes from 'app/private-routes';
+import SideBar from 'app/components/side-bar';
 
 type Props = {
   token: string;
@@ -11,6 +13,7 @@ type Props = {
 
 const Home = ({ token }: Props) => {
   const { dispatchUser } = useUserInfos();
+  const [devs, setDevs] = React.useState(['Mario', 'Alfredo', 'Jorge']);
 
   React.useEffect(() => {
     const getUser = async () => {
@@ -33,9 +36,21 @@ const Home = ({ token }: Props) => {
     getUser();
   }, [token, dispatchUser]);
 
+  const handleSubmit = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      console.log('Submited', event);
+    },
+    []
+  );
+
   return (
-    <div className="w-full h-screen bg-slate-100">
+    <div className="flex flex-col items-center justify-center w-full h-screen bg-slate-100">
       <Header />
+      <div className="flex w-full max-w-6xl bg-white border-2 border-t-0 border-gray-200 home-screen">
+        <SideBar onSubmit={handleSubmit} items={devs} />
+        <div>chat</div>
+      </div>
     </div>
   );
 };
