@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-type User =
-  | {
-      avatarUrl: string;
-      name: string;
-    }
-  | undefined;
+import { User as UserProps } from 'app/types';
+
+export type User = UserProps | undefined;
 
 type ContextProps = {
   user: User;
