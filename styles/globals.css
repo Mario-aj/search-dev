@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.home-screen {
+  height: calc(100% - 80px);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(203 213 225);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(203 213 225);
+  border-radius: 20px;
+  border: 1px solid white;
+}
