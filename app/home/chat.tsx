@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { FaSmile } from 'react-icons/fa';
 import { MdSend } from 'react-icons/md';
 
@@ -9,6 +10,13 @@ type Props = {
 };
 
 const Chat = ({ target }: Props) => {
+  const [messages, setMessages] = React.useState([
+    { msg: 'Eae mano, de boa?', author: 'user' },
+    { msg: 'Boa tarde, tudo bem?', author: 'target' },
+    { msg: 'Tudo mano e você?', author: 'user' },
+    { msg: 'Tbm estou bem, obrigado', author: 'target' },
+  ]);
+
   if (!target)
     return (
       <div className="flex-col items-center justify-center flex-1 hidden w-full text-gray-600 sm:flex">
@@ -25,7 +33,7 @@ const Chat = ({ target }: Props) => {
         className="box-border flex items-center w-full p-4 mb-auto border-b-2 border-gray-400"
       >
         <Avatar avatarUrl={target.avatarUrl} emptyText={target.name || ''} />
-        <div className="flex flex-col flex-1 ml-4">
+        <div className="flex flex-col ml-4">
           <div className="flex items-center ">
             <strong
               title={target.name}
@@ -56,16 +64,40 @@ const Chat = ({ target }: Props) => {
           )}
         </div>
       </div>
+      <div
+        id="messages"
+        className="flex flex-col flex-1 p-4 overflow-scroll rounded-md custom-scrollbar"
+      >
+        {messages.length > 0 &&
+          messages.map((message, index) => (
+            <div
+              key={`${message.author}-${index}`}
+              className={`flex flex-row items-start px-3 py-2 mb-4 rounded-md ${
+                message.author === 'user'
+                  ? 'bg-blue-500 text-white ml-auto'
+                  : 'bg-slate-300 text-gray-800 mr-auto'
+              }`}
+            >
+              <span>{message.msg}</span>
+            </div>
+          ))}
+      </div>
       <form
         className="relative p-2 pb-1"
         onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();
-          console.log('message submited', event.target.elements[0].value);
+          setMessages([
+            ...messages,
+            { msg: event.target.elements[0].value, author: 'user' },
+          ]);
+
+          event.target.elements[0].value = '';
         }}
       >
         <FaSmile className="absolute w-6 h-6 text-blue-500 transition-opacity duration-300 cursor-pointer top-4 left-4 opacity-70 hover:opacity-100" />
         <input
           type="text"
+          id="message"
           name="message"
           placeholder="write a message..."
           className="w-full p-2 px-10 mt-auto border border-gray-200 outline-none rounded-3xl focus:border-2 focus:border-blue-200"
