@@ -2,9 +2,10 @@
 type Props = {
   avatarUrl?: string;
   emptyText: string;
+  className?: string;
 };
 
-const Avatar = ({ avatarUrl, emptyText }: Props) => {
+const Avatar = ({ avatarUrl, emptyText, className }: Props) => {
   function reduceName(name: string) {
     const splitName = name.split(' ');
 
@@ -12,7 +13,9 @@ const Avatar = ({ avatarUrl, emptyText }: Props) => {
   }
 
   return (
-    <div className="flex items-center justify-center overflow-hidden border-2 border-blue-500 rounded-full cursor-pointer w-14 h-14">
+    <div
+      className={`flex items-center justify-center overflow-hidden border-2 border-blue-500 rounded-full cursor-pointer w-14 h-14 ${className}`}
+    >
       {avatarUrl ? (
         <img src={avatarUrl} alt="avatar" className="w-full h-full" />
       ) : (

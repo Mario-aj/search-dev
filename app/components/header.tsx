@@ -28,7 +28,7 @@ const Header = () => {
           onClick={() => router.push('/')}
         />
         <Dropdown
-          avatarUrl={user.avatar_url}
+          avatarUrl={user.avatarUrl}
           title={user.name}
           open={isOpen}
           onOpen={() => setIsOpen((open) => !open)}

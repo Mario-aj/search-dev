@@ -2,7 +2,7 @@ import * as React from 'react';
 
 type User =
   | {
-      avatar_url: string;
+      avatarUrl: string;
       name: string;
     }
   | undefined;
