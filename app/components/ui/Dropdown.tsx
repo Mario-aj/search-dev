@@ -12,11 +12,11 @@ type Props = {
 };
 
 const DropDown = ({
-  avatarUrl,
-  title,
-  children,
-  onOpen,
   open = false,
+  title,
+  onOpen,
+  children,
+  avatarUrl,
 }: Props) => {
   function reduceName(name: string) {
     const splitName = name.split(' ');

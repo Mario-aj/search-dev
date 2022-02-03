@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FaSmile } from 'react-icons/fa';
 import { MdSend } from 'react-icons/md';
+import Picker from 'emoji-picker-react';
 
 import { Avatar } from 'app/components/ui';
 import { User } from 'app/context/user-context';
@@ -108,6 +109,10 @@ const Chat = ({ target }: Props) => {
         >
           <MdSend className="w-full h-full" />
         </button>
+        <Picker
+          onEmojiClick={onEmojiClick}
+          pickerStyle={{ width: '25%', display: open ? 'flex' : 'none' }}
+        />
       </form>
     </div>
   );
