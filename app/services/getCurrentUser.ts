@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getUserInfos = async (accessToken: string) => {
+const getCurrentUser = async (accessToken: string) => {
   try {
     const response = await axios.get(`https://api.github.com/user`, {
       headers: { Authorization: `token ${accessToken}` },
@@ -12,4 +12,4 @@ const getUserInfos = async (accessToken: string) => {
   }
 };
 
-export default getUserInfos;
+export default getCurrentUser;

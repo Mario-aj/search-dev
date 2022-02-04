@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import Header from 'app/components/header';
-import getUserInfos from 'app/services/getUserInfos';
-import { useUserInfos } from 'app/hooks/useUserInfos';
+import getCurrentUser from 'app/services/getCurrentUser';
+import { useCurrentUser } from 'app/hooks/useCurrentUser';
 import PrivateRoutes from 'app/private-routes';
 import { SideBar, Chat } from 'app/home';
 import { User } from 'app/context/user-context';
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Home = ({ token }: Props) => {
-  const { dispatchUser } = useUserInfos();
+  const { dispatchUser } = useCurrentUser();
   const [selectedDev, setSelectedDev] = React.useState<User>(undefined);
   const [devs, setDevs] = React.useState([
     {
@@ -51,7 +51,7 @@ const Home = ({ token }: Props) => {
     const getUser = async () => {
       try {
         if (token) {
-          const reponse = await getUserInfos(token);
+          const reponse = await getCurrentUser(token);
           const data = {
             id: reponse.id,
             bio: reponse.bio,
