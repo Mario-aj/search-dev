@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Dropdown } from 'app/components/ui';
-import { useUserInfos } from 'app/hooks/useUserInfos';
+import { useCurrentUser } from 'app/hooks/useCurrentUser';
 
 const Header = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
-  const { user } = useUserInfos();
+  const { user } = useCurrentUser();
 
   const handleLogout = React.useCallback(() => {
     localStorage.removeItem('search-dev-access_token');

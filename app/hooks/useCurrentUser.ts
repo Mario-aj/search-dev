@@ -1,7 +1,7 @@
 import { UserContext } from 'app/context/user-context';
 import React from 'react';
 
-export const useUserInfos = () => {
+export const useCurrentUser = () => {
   const context = React.useContext(UserContext);
 
   if (!context)
