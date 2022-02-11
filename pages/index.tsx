@@ -89,7 +89,7 @@ const Home = ({ token }: Props) => {
           items={devs}
           onSelect={setSelectedDev}
         />
-        <Chat target={selectedDev} />
+        <Chat targetUser={selectedDev} />
       </div>
     </div>
   );
